@@ -1,6 +1,6 @@
 
 /* eslint quotes: 0 */
-// Validation definitions for validateSchema hook for service `user`. (Can be re-generated.)
+// Validation definitions for validateSchema hook for service `users`. (Can be re-generated.)
 const { validateSchema } = require('feathers-hooks-common');
 const merge = require('lodash.merge');
 const ajv = require('ajv');
@@ -15,10 +15,15 @@ const ID = 'string';
 let base = merge({},
   // !<DEFAULT> code: base
   {
-    title: "User",
-    description: "User database.",
-    required: [],
-    uniqueItemProperties: [],
+    title: "Users",
+    description: "Users database.",
+    required: [
+      "number",
+      "password"
+    ],
+    uniqueItemProperties: [
+      "number"
+    ],
     properties: {
       id: {
         type: ID,
@@ -34,6 +39,11 @@ let base = merge({},
         type: "number",
         pattern: "^[0-9]{10}$",
         minLength: 10
+      },
+      password: {
+        type: "string",
+        faker: "user.password",
+        example: "test@123"
       }
     }
   },

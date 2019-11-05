@@ -1,24 +1,27 @@
 
-// Define the Feathers schema for service `user`. (Can be re-generated.)
+// Define the Feathers schema for service `users`. (Can be re-generated.)
 // !code: imports // !end
 // !code: init // !end
 
 // Define the model using JSON-schema
 let schema = {
   // !<DEFAULT> code: schema_header
-  title: 'User',
-  description: 'User database.',
+  title: 'Users',
+  description: 'Users database.',
   // !end
   // !code: schema_definitions // !end
 
   // Required fields.
   required: [
-    // !code: schema_required // !end
+    // !code: schema_required
+    'number',
+    'password'
+    // !end
   ],
   // Fields with unique values.
   uniqueItemProperties: [
     // !code: schema_unique
-    
+    'number'
     // !end
   ],
 
@@ -39,6 +42,11 @@ let schema = {
       type: 'number',
       pattern: '^[0-9]{10}$',
       minLength: 10,
+    },
+    password: {
+      type: 'string',
+      faker: 'user.password',
+      example: 'test@123'
     }
     // !end
   },
@@ -55,7 +63,7 @@ let extensions = {
       sort: { _id: 1 },
     },
     // sql: {
-    //   sqlTable: 'User',
+    //   sqlTable: 'Users',
     //   uniqueKey: '_id',
     //   sqlColumn: {
     //     __authorId__: '__author_id__',

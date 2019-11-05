@@ -1,6 +1,6 @@
 
 /* eslint quotes: 0 */
-// Defines Mongoose model for service `user`. (Can be re-generated.)
+// Defines Mongoose model for service `users`. (Can be re-generated.)
 const merge = require('lodash.merge');
 // eslint-disable-next-line no-unused-vars
 const mongoose = require('mongoose');
@@ -18,7 +18,13 @@ let moduleExports = merge({},
     number: {
       type: Number,
       match: "^[0-9]{10}$",
-      minLength: 10
+      minLength: 10,
+      required: true,
+      unique: true
+    },
+    password: {
+      type: String,
+      required: true
     }
   },
   // !end
