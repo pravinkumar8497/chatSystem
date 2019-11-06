@@ -15,6 +15,11 @@ const { create, update, patch, validateCreate, validateUpdate, validatePatch } =
 
 // !code: init // !end
 
+let print = (context) => {
+  console.log(context.data);
+  
+}
+
 let moduleExports = {
   before: {
     // Your hooks should include:
@@ -28,7 +33,7 @@ let moduleExports = {
     all: [],
     find: [ authenticate('jwt') ],
     get: [ authenticate('jwt') ],
-    create: [ hashPassword() ],
+    create: [ hashPassword() , print],
     update: [ hashPassword(), authenticate('jwt') ],
     patch: [ hashPassword(), authenticate('jwt') ],
     remove: [ authenticate('jwt') ]

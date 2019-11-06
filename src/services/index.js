@@ -1,6 +1,7 @@
 
 // Configure the Feathers services. (Can be re-generated.)
 let contact = require('./contact/contact.service');
+let fileupload = require('./fileupload/fileupload.service');
 let group = require('./group/group.service');
 let users = require('./users/users.service');
 
@@ -10,6 +11,7 @@ let users = require('./users/users.service');
 // eslint-disable-next-line no-unused-vars
 let moduleExports = function (app) {
   app.configure(contact);
+  app.configure(fileupload);
   app.configure(group);
   app.configure(users);
   // !code: func_return // !end
